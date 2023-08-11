@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { MENUS } from "../../constants"
 import { Logo } from "../../utils/image"
 import { FiMenu } from "react-icons/fi"
 
-const Navbar = () => {
+const Navbar = ({ handleSpecialityScroll }) => {
     const [show, setShow] = useState(false);
 
     const showHandler = () => {
         setShow(!show)
     }
+
     return (
         <header>
             <nav className="max-width flex items-center justify-between py-3 px-[30px] z-[99999]">
@@ -18,7 +20,7 @@ const Navbar = () => {
                 </div>
                 <ul className={`py-3 z-50 w-full md:static absolute md:w-auto left-0 flex md:flex-row flex-col space-x-0 md:space-x-5 my-5 space-y-3 px-[30px] md:px-0 md:space-y-0 bg-primary-1 md:bg-white transition-all duration-500 ${show ? "top-10" : "-top-[200px]"}`}>
                     {MENUS.map((menu) => (
-                        <li className="text-white md:text-black" key={menu.id}>{menu.label}</li>
+                        <li className="text-white md:text-primary-1 cursor-pointer" key={menu.id} onClick={`${menu.label == "Speciality" ? handleSpecialityScroll : null}`}>{menu.label}</li>
                     ))}
                 </ul>
             </nav>

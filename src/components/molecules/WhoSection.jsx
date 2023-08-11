@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { SLIDERDATA } from "../../constants"
 import { CardWho } from "../atoms/Card"
 
-const WhoSection = () => {
+const WhoSection = ({ whoRef }) => {
     const [slider, setSlider] = useState(0);
     const { id, label, title, desc } = SLIDERDATA[slider]
 
@@ -19,7 +20,7 @@ const WhoSection = () => {
         }
     }
     return (
-        <section className="max-width px-[30px] flex justify-center">
+        <section className="max-width px-[30px] flex justify-center" ref={whoRef}>
             <CardWho sliderData={SLIDERDATA} id={id} label={label} title={title} desc={desc} handleNext={handleNext} handlePrev={handlePrev} />
         </section>
     )
